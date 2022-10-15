@@ -132,7 +132,7 @@
                 {%if seller.picture%}
                 <img
                   src="{{seller.picture.url}}"
-                  class="rounded-circle img-fluid img-thumbnail"
+                  class="rounded-circle img-fluid img-thumbnail" width="300"
                   id="profile_pic"
                 />
                 {%else%}
@@ -281,8 +281,8 @@
         </div>
       </form>
     </div>
-    <h3 class="text text-center">Products:</h3>
-    <div class="-md d-flex bg-light rounded container flex-wrap">
+    <h3 class="text text-center mb-1">Products:</h3>
+    <div class="-md d-flex bg-light rounded container flex-wrap mg-5">
       {% for item in seller.product.all%}
       <div class="card col-3 m-4">
         {% if item.image%}
@@ -311,15 +311,61 @@
       </div>
       {%endfor%}
     </div>
-    <footer>
-      <div class="contacts contaienr d-flex justify-content-evenly my-5">
-        <h4>Contact us:</h4>
-        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href=""><i class="fa-brands fa-facebook"></i></a>
-        <a href=""><i class="fa-brands fa-instagram"></i></a>
-        <a href=""><i class="fas fa-phone"></i></a>
+    <!-- footer -->
+    <footer class="bg-light text-center text-white col-10 container">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-1" id="contact">
+          <h3 class="text-black">Contact Us:</h3>
+          <!-- Facebook -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #3b5998"
+            href="#!"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+
+          <!-- Twitter -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #55acee"
+            href="#!"
+            role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+
+          <!-- Instagram -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #ac2bac"
+            href="#!"
+            role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+
+          <!-- Linkedin -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #0082ca"
+            href="#!"
+            role="button"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
       </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MyStore.com</a>
+      </div>
+      <!-- Copyright -->
     </footer>
+    <!-- end footer -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <script
