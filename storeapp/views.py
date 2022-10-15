@@ -8,7 +8,6 @@ def index(request):
 
 
 def home(request):
-    print(request.session)
     context = {}
     if 'seller_id' in request.session:
         seller = Seller.objects.get(id=request.session['seller_id'])
@@ -16,7 +15,7 @@ def home(request):
             context = {
                 'seller': seller,
                 'sellers': Seller.objects.all,
-                'products': Product.objects.all()
+                'products': Product.objects.all(),
             }
     if 'customer_id' in request.session:
         user = Customer.objects.get(id=request.session['customer_id'])
@@ -24,14 +23,16 @@ def home(request):
             context = {
                 'user': user,
                 'sellers': Seller.objects.all,
-                'products': Product.objects.all()
+                'products': Product.objects.all(),
+
             }
     else:
         context = {
             'seller': None,
             'user': None,
             'sellers': Seller.objects.all,
-            'products': Product.objects.all()
+            'products': Product.objects.all(),
+
         }
     return render(request, 'store/home.html', context)
 
@@ -64,6 +65,7 @@ def create_product(request):
 
 def view_product(request, id):
     product = Product.objects.get(id=id)
+
     context = {
         'product': product,
         'cart': Cart(request)
@@ -159,9 +161,9 @@ def add_to_cart(request):
     return redirect('/store/cart')
 
 
-def item_clear(request):
-    item = Product.objects.get(id=request.POST.get('product_id'))
-    cart = request.session
+def item_clear(request, id):
+    item = Product.objects.get(id=id)
+    cart = Cart(request)
     cart.remove(item)
     return redirect("/store/cart")
 
@@ -180,8 +182,6 @@ def cart_clear(request):
 
 def show_cart(request):
     cart = Cart(request)
-    # customer_id = request.session['customer_id']
-    # customer = Customer.objects.get(customer_id)
     product_ids = cart.cart.keys()
     cart_items = Product.objects.filter(id__in=product_ids)
     context = {
@@ -198,13 +198,15 @@ def place_order(request):
     cart = Cart(request)
     customer_id = request.session['customer_id']
     customer = Customer.objects.get(id=customer_id)
-    total = [item.quantity * item.price for item in cart.values()]
+    total = cart.get_total_price()
     new_order = Order.objects.create(
         customer=customer,
         total=sum(total),
     )
-    for item in cart.cart:
-        new_order.order_items.add(item)
+    product_ids = cart.cart.keys()
+    cart_items = Product.objects.filter(id__in=product_ids)
+    for item in cart_items:
+        new_order.order_item.add(item)
     new_order.save()
     customer.orders.add(new_order)
     return redirect('/store/customer_profile')

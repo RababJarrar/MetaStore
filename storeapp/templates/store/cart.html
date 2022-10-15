@@ -7,10 +7,10 @@
           class="card card-registration card-registration-2"
           style="border-radius: 15px"
         >
-          <div class="card-body p-0">
+          <form class="card-body p-0 my-5">
             <div class="row g-0">
               <div class="col-lg-8">
-                <form method="post" action="/store/place_order" class="p-5">
+                <div class="p-5">
                   {%csrf_token%}
                   <div
                     class="d-flex justify-content-between align-items-center mb-5"
@@ -41,7 +41,7 @@
 
                     <div class="col-md-3 col-lg-3 col-xl-3">
                       <h6 class="text-muted">$</h6>
-                      <h6 class="text-black mb-0">Cotton T-shirt</h6>
+                      <h6 class="text-black mb-0">{{product.name}}</h6>
                     </div>
 
                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
@@ -57,15 +57,16 @@
                     </div>
                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                       <a
-                        href="/cart_item_clear/{{product.product_id}}"
-                        class="text-muted"
-                        ><i class="fas fa-times"></i
+                        href="/store/cart_item_clear/{{product.id}}"
+                        class=" text-danger"
+                        
+                        ><i class="fas fa-trash p-2"></i
                       ></a>
                     </div>
                     {%endfor%}
                   </div>
                   <hr class="my-4" />
-                </form>
+                </div>
               </div>
               <div class="col-lg-4 bg-grey">
                 <div class="p-5">
@@ -77,7 +78,7 @@
                     <h5></h5>
                   </div>
 
-                  <h5 class="text-uppercase mb-3">Shipping</h5>
+                  <h6 class="text-uppercase mb-3">Shipping</h5>
 
                   <div class="mb-4 pb-2">
                     <select class="select">
@@ -86,32 +87,38 @@
                       <option value="3">Free 1-2H</option>
                     </select>
                   </div>
+                  <h6 class="text-uppercase mb-1">Subscription</h5>
+
+                  <div class="mb-4 pb-2">
+                    <select class="select">
+                      <option value="1">monthly</option>
+                      <option value="2">weekly</option>
+                      <option value="3">daily</option>
+                      <option value="4">other</option>
+                    </select>
+                  </div>
                   <hr class="my-4" />
                   <div class="d-flex justify-content-between mb-5">
-                    <h5 class="text-uppercase">€{{total}}</h5>
+                    <h6 class="text-uppercase">€{{total}}</h5>
                   </div>
-                  <button
-                    type="button"
-                    class="btn btn-dark btn-block btn-lg"
-                    data-mdb-ripple-color="dark"
+                  <input
+                    type="submit"
+                    value="Place Order"
+                    class="btn btn-outline-success btn-block btn-lg"
                   >
-                    <form action="/place_order" method="POST">Buy</form>
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-dark btn-block btn-lg"
-                    data-mdb-ripple-color="dark"
-                  >
-                    <a
-                      href="/cart_cart_clear"
-                      style="color: #fff; text-decoration: none"
-                      >Clear All</a
-                    >
-                  </button>
+                  <a href="/store/cart_cart_clear" >
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-block btn-lg"
+                      data-mdb-ripple-color="dark"
+                    >Clear cart
+                    </button>
+                  </a>
+                  
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
