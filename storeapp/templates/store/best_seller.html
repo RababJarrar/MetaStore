@@ -1,0 +1,60 @@
+{% extends 'store/base_header.html' %} {%load static%} {% block content%}
+<h1 class="container text-center mt-8 form_header my-5">Bestsellers:</h1>
+<div class="-md d-flex bg-light rounded container flex-wrap">
+  {% for seller in sellers %}
+  <div class="col-12">
+    <h3 class="mb-3 mt-5">{{seller.name }}:</h3>
+  </div>
+  {% for product in seller.product.all %}
+  <div class="card3 col-3">
+    <div class="container text-center  m-0 p-0">
+      {%if seller.picture%}
+      <img
+        src="{{seller.picture.url}}"
+        class="rounded-circle account-img"
+        id="profile_pic"
+        width="100px"
+      />
+      {%else%}
+      <img
+        src="{% static 'store/imgs/profile.png' %}"
+        class="rounded-circle img-fluid img-thumbnail"
+        id="profile_pic"
+      />
+      {%endif%}
+    </div>
+    
+    {%if seller.picture%}
+      <img
+        src=" {{ product.image.url }} "
+        class="card-img-top"
+        alt="{{item.name}}"
+      />
+      {%else%}
+      <img
+        src="{% static 'store/imgs/meta.png' %}"
+        class="rounded-circle img-fluid img-thumbnail"
+        id="profile_pic"
+      />
+      {%endif%}
+      <div class="card-body text-center">
+        <h5 class="card-title text-center .text-nowrap">{{product.name}}</h5>
+        <h5 class="card-title text-center .text-nowrap">{{product.price}}</h5>
+  
+        <a
+          href="/store/view_product/{{product.id}}"
+          class="form d-flex flex-column"
+        >
+        {%csrf_token%}
+          <button class="btn-warning">Buy</button>
+        </a>
+      </div>
+    </div>
+    
+  </div>
+  {%endfor%}
+  <br /><br />
+  {%endfor%}
+</div>
+
+{%include 'store/base_footer.html'%} {% endblock %}

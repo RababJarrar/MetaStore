@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store</title>
+    {% load static %}
+    <script src="{% static 'login/js/toggle.js' %}"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'login/css/styles.css' %}" />
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <div class="user signinBx">
+          <div class="formBx">
+            <form action="/login_customer" method="POST">
+              {%csrf_token%}
+              <h2>Sign In</h2>
+
+              <input type="text" name="email" placeholder="Email" required />
+              <input
+                type="password"
+                name="password"
+                required
+                placeholder="Password"
+              />
+              <input type="submit" value="Login" />
+
+              <p class="signup">
+                Don't have an account ?
+                <a href="#" onclick="toggleForm();">Sign Up.</a>
+              </p>
+              <p class="text-center text-secondary">
+                <span class="signup">
+                  Are you a seller? <a href="/login_seller_view">Signin</a>!
+                </span>
+              </p>
+            </form>
+          </div>
+        </div>
+        <div class="user signupBx">
+          <div class="formBx">
+            <form
+              action="/signup_customer"
+              method="POST"
+              class="signup_customer"
+            >
+              {%csrf_token%}
+              <h2>Create an account</h2>
+              <input
+                type="text"
+                name="first_name"
+                placeholder="first name"
+                required
+              />
+              <input
+                type="text"
+                name="last_name"
+                placeholder="last name"
+                required
+              />
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+              />
+
+              <input
+                type="phone"
+                name="mobile"
+                placeholder="mobile"
+                placeholder="Mobile"
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Create Password"
+                id="password"
+                required
+              />
+              <input
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm Password"
+                required
+              />
+
+              <input type="submit" value="Sign Up" />
+              <p class="signup">
+                Already have an account ?
+                <a href="#" onclick="toggleForm();">Sign in.</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="errors btn-danger">
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+            {{ message }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </section>
+    <script
+      type="text/javascript"
+      src="{% static 'login/js/toggle.js' %}"
+    ></script>
+  </body>
+</html>

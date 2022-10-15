@@ -1,0 +1,83 @@
+{% extends 'store/base_header.html' %} {%load static%} {% block content%}
+<section
+      class="container-md rounded vh-60 mb-5"
+      style="background-color: #f4f5f7"
+    >
+      <div class="container py-5 h-50">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-6 mb-2 mb-lg-0">
+            <div class="card mb-3" style="border-radius: 0.5rem">
+              <div class="row g-0">
+                <div
+                  class="col-md-4 gradient-custom text-center text-white"
+                  style="
+                    border-top-left-radius: 0.5rem;
+                    border-bottom-left-radius: 0.5rem;
+                  "
+                >
+                  <img
+                    src="{% static 'store/imgs/profile.png' %}"
+                    alt="Avatar"
+                    class="img-fluid my-5"
+                    style="width: 80px"
+                  />
+                  <i class="far fa-edit mb-5"></i>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body p-4">
+                    <h6>Hello {{customer.first_name}}</h6>
+                    <hr class="mt-0 mb-4">
+                    <div class="row pt-1">
+                        <div class="col-6 mb-3">
+                        <h6>Name</h6>
+                        <p class="text-muted">{{customer.first_name}} {{customer.last_name}}</p>
+                        </div>
+                        <div class="col-6 mb-3">
+                        <h6>Address</h6>
+                        <p class="text-muted">{{customer.address}}</p>
+                        </div>
+                    </div><br>
+                    <div class="row pt-1">
+                        <div class="col-6 mb-3">
+                        <h6>Email</h6>
+                        <p class="text-muted">{{customer.email}}</p>
+                        </div>
+                        <div class="col-6 mb-3">
+                        <h6>Phone</h6>
+                        <p class="text-muted">{{customer.mobile}}</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container col-6 mb-5">
+      <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+          <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in customer.orders.all %}
+            <tr>
+                <td>
+                    <p class="fw-normal mb-1">{{order.id}}</p>
+                </td>
+                <td>
+                    <span class="fw-normal mb-1">{{order.created_at}}</span>
+                </td>
+                <td>{{order.total}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+{%include 'store/base_footer.html'%} {% endblock %}

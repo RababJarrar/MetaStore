@@ -1,0 +1,55 @@
+{% extends 'store/base_header.html' %} {%load static%} {% block content%}
+<div class="container mt-5 mb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-7">
+      <div class="card p-3 py-4">
+        <div class="text-center">
+          <img src="{{seller.image.url}}" width="200" />
+        </div>
+        <div class="text-center mt-3">
+          <div class="container text-center">
+            <img
+              src="{{seller.picture.url}}"
+              class="rounded-circle account-img"
+              id="profile_pic"
+            />
+          </div>
+          <a class="bg-warning p-1 px-4 rounded text-white">Seller</a>
+          <h5 class="mt-2 mb-0">{{seller.name}}</h5>
+          <div class="px-4 mt-1">
+            <p class="fonts">{{seller.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- products menue -->
+<h3 class="text text-center mb-5">{{seller.name}} Products:</h3>
+<div class="-md d-flex bg-light rounded container col-10 mb-5 flex-wrap">
+  {% for product in seller.product.all%}
+  <div class="card col-2 m-4" style="min-width: 190px">
+    {% if product.image%}
+    <img
+      src="{{ product.image.url }}"
+      class="card-img-top"
+      alt="{{item.name}}"
+    />
+    {%else%}
+    <img
+      src="{% static 'store/imgs/default_product.png' %}"
+      class="card-img-top"
+      alt="{{product.name}}"
+    />
+    {%endif%}
+    <div class="card-body text-center">
+      <h5 class="card-title text-center .text-nowrap">{{product.name}}</h5>
+      <h5 class="card-title text-center .text-nowrap">{{product.price}} $</h5>
+      <a href="/view_product/{{item.id}}" class="btn btn-warning">Buy</a>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+
+{%include 'store/base_footer.html'%} {% endblock %}
