@@ -15,9 +15,12 @@
     />
     <link rel="stylesheet" href="{% static 'login/css/styles.css' %}" />
   </head>
-  <body style="background-image: url('../../static/login/imgs/bg.png');">
+  <body style="background-image: url('../../static/login/imgs/bg.png')">
     <section>
-      <div class="container" style="background-image: url('../../static/login/imgs/ggg.jfif');">
+      <div
+        class="container"
+        style="background-image: url('../../static/login/imgs/ggg.jfif')"
+      >
         <div class="user signinBx">
           <div class="formBx">
             <form action="/login_customer" method="POST">
@@ -90,15 +93,19 @@
                 type="password"
                 name="password"
                 placeholder="Create Password"
-                id="password"
+                id="Password"
                 required
               />
-              <input
-                type="password"
-                name="confirm_password"
-                placeholder="Confirm Password"
-                required
-              />
+              <div>
+                <input
+                  type="password"
+                  name="confirm_password"
+                  id="ConfirmPassword"
+                  placeholder="Confirm Password"
+                  required
+                />
+                <p id="msg"></p>
+              </div>
 
               <input type="submit" value="Sign Up" />
               <p class="signup">
@@ -125,5 +132,19 @@
       type="text/javascript"
       src="{% static 'login/js/toggle.js' %}"
     ></script>
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+      type="text/javascript"
+    >
+      $(document).ready(function () {
+        $('#ConfirmPassword').keyup(function () {
+          if ($('#Password').val() != $('#ConfirmPassword').val()) {
+            $('#msg').html('Password do not match').css('color', 'red')
+          } else {
+            $('#msg').html('Password matched').css('color', 'green')
+          }
+        })
+      })
+    </script>
   </body>
 </html>

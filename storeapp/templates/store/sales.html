@@ -264,13 +264,17 @@
       <img
         src=" {{ product.image.url }} "
         class="card-img-top"
-        alt="{{item.name}}"
+        alt="{{product.name}}"
+        style="width: 15rem; height: 17.5rem"
+
       />
       {%else%}
       <img
         src="{% static 'store/imgs/default_product.png' %}"
         class="img-fluid img-thumbnail"
         id="profile_pic"
+        style="width: 15rem; height: 17.5rem"
+
       />
       {%endif%}
       <div class="card-body">

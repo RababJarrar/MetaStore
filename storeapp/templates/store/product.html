@@ -49,11 +49,13 @@
             <div
               class="d-flex justify-content-center total font-weight-bold mt-4"
             >
+              {%if not request.session.seller_id%}
               <input
                 type="submit"
                 value="Add to cart"
                 class="btn btn-outline-success"
               />
+              {%endif%}
             </div>
           </form>
         </div>

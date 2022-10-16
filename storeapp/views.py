@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from storeapp.models import Customer, Seller, Product, Product_category, Order
+from storeapp.models import Customer, Seller, Product, Product_category, Order, Order_item
 from utils.views import Cart
 
 
@@ -40,8 +40,11 @@ def home(request):
 def create_product(request):
     seller_id = request.session['seller_id']
     seller = Seller.objects.get(id=seller_id)
-    category_id = request.POST.get('category')
-    category = Product_category.objects.get(id=category_id)
+    category = request.POST.get('category')
+    category = Product_category.objects.create(
+        name=category
+    )
+    category.save()
     name = request.POST.get('name')
     price = request.POST.get('price')
     quantity = request.POST.get('quantity')
@@ -100,7 +103,6 @@ def all_products(request):
 def view_sales(request):
     sales = Product.objects.all()
     sellers = Seller.objects.all()
-    print(sales.get(id=1))
     context = {
         'products_on_sales': sales,
         'sellers': sellers
@@ -143,20 +145,15 @@ def add_profile_picture(request):
 
 
 """ cart functionality for adding items clearing the cart,
-    increase, decrease Items and calculate the order 
+    increase, decrease Items and calculate the order
 """
 
 
 def add_to_cart(request):
-    request.session.clear()
     cart = Cart(request)
     quantity = request.POST.get('quantity')
-    print(quantity)
     product_id = request.POST.get('product_id')
     product = Product.objects.get(id=product_id)
-    print(product.id)
-    print(cart.cart)
-
     cart.add(product, quantity)
     return redirect('/store/cart')
 
@@ -196,20 +193,23 @@ def show_cart(request):
 # @login_required
 def place_order(request):
     cart = Cart(request)
-    customer_id = request.session['customer_id']
-    customer = Customer.objects.get(id=customer_id)
-    total = cart.get_total_price()
-    new_order = Order.objects.create(
-        customer=customer,
-        total=sum(total),
-    )
-    product_ids = cart.cart.keys()
-    cart_items = Product.objects.filter(id__in=product_ids)
-    for item in cart_items:
-        new_order.order_item.add(item)
-    new_order.save()
-    customer.orders.add(new_order)
-    return redirect('/store/customer_profile')
+    if 'customer_id' in request.session:
+        customer_id = request.session['customer_id']
+        customer = Customer.objects.get(id=customer_id)
+        total = cart.get_total_price()
+        new_order = Order.objects.create(
+            customer=customer,
+            total=total
+        )
+        product_ids = cart.cart.keys()
+        cart_items = Product.objects.filter(id__in=product_ids)
+        for item in cart_items:
+            new_item = Order_item.objects.create(product=item)
+            new_item.save()
+            new_order.item.add(new_item)
+        new_order.save()
+        customer.orders.add(new_order)
+        return redirect('/store/customer_profile')
 
 
 def about_page(request):

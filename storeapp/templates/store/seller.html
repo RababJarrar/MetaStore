@@ -56,7 +56,7 @@
               >
                 <div class="d-flex my-2">
                   <!-- Cart -->
-                  <a class="text-reset me-3" href="/cart">
+                  <a class="text-reset me-3" href="/store/cart">
                     <span><i class="fas fa-shopping-cart"></i></span>
                     <span
                       class="badge rounded-pill badge-notification bg-danger"
@@ -70,7 +70,7 @@
                     Logout
                   </a>
                   {%else%}
-                  <a href="/" class="btn btn-success btn-sm mx-2">login</a
+                  <a href="/login" class="btn btn-success btn-sm mx-2">login</a
                   >{%endif%}
                 </div>
               </div>
@@ -132,7 +132,8 @@
                 {%if seller.picture%}
                 <img
                   src="{{seller.picture.url}}"
-                  class="rounded-circle img-fluid img-thumbnail" width="300"
+                  class="rounded-circle img-fluid img-thumbnail"
+                  width="300"
                   id="profile_pic"
                 />
                 {%else%}
@@ -239,16 +240,12 @@
           <label class="input-group-text col-1 rounded form_label"
             >Categories:</label
           >
-          <select
+          <input
             class="custom-select col-1 rounded form-control"
+            type="text"
             name="category"
-            value="{{category.id}}"
             required
-          >
-            {% for category in categories%}
-            <option value="{{category.id}}">{{category.name}}</option>
-            {%endfor%}
-          </select>
+          />
         </div>
 
         <div class="form-group col-6 input-group mb-3">
@@ -256,7 +253,7 @@
             >Image:</label
           >
           <label class="custom-file-upload form_label">
-            <input type="file" name="image" id="img_upload" />
+            <input type="file" name="image" id="img_upload" required />
             <i class="fa fa-cloud-upload"></i>Click here tou upload image of the
             product.
           </label>
@@ -303,8 +300,8 @@
           <h5 class="card-title text-center .text-nowrap">{{item.price}}</h5>
 
           <h5>{{item.quantity}}</h5>
-          <input type="hidden" name="product_id" value="placeholder" ="0" />
-          <a action="/view_product/{{item.id}}">
+          <input type="hidden" name="product_id" />
+          <a href="/store/view_product/{{item.id}}">
             <button class="btn btn-warning">View</button>
           </a>
         </div>

@@ -50,13 +50,22 @@
         {% for seller in sellers %}
         <a class="item text-decoration-none" href="/store/seller/{{seller.id}}">
           <div class="card">
+            {%if seller.picture%}
             <img
               class="img-fluid img-thumbnail"
               alt="{{seller.name}}"
               src="{{seller.picture.url}}"
               class="img-fluid img-thumbnail"
-              style="height: 20rem"
+              style="height: 20rem; width: 20rem"
             />
+            {%else%}
+            <img
+              class="img-fluid img-thumbnail"
+              alt="{{seller.name}}"
+              src="{%static 'store/imgs/meta.png'%}"
+              class="img-fluid img-thumbnail"
+              style="height: 20rem; width: 20rem"
+            />{%endif%}
             <div class="card-body text-center">
               <h4 class="card-title">{{seller.name}}</h4>
             </div>

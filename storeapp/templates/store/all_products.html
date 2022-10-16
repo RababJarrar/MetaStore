@@ -11,27 +11,30 @@
     >
       <div class="MultiCarousel-inner d-flex justify-content-evenly">
         {%for seller in sellers %}
-        <a class="item text-decoration-none" href="/store/seller/{{seller.id}}">
-          <div class="card pad15" href="/seller">
-            {%if seller.picture%}
-            <img
-              src="{{seller.picture.url}}"
-              class="card-img-top d-block"
-              id="profile_pic"
-              style="width: 20rem; height: 20rem"
-            />
-            {%else%}
-            <img
-              src="{% static 'store/imgs/profile.png' %}"
-              class="rounded-circle img-fluid img-thumbnail"
-              id="profile_pic"
-            />
-            {%endif%}
-            <div class="card-body text-center">
+        <div class="card">
+          {%if seller.picture%}
+          <img
+            src="{{seller.picture.url}}"
+            class="card-img-top d-block"
+            id="profile_pic"
+            style="width: 20rem; height: 20rem"
+          />
+          {%else%}
+          <img
+            src="{% static 'store/imgs/profile.png' %}"
+            class="rounded-circle img-fluid img-thumbnail"
+            id="profile_pic"
+          />
+          {%endif%}
+          <div class="card-body text-center">
+            <a
+              class="item text-decoration-none"
+              href="/store/seller/{{seller.id}}"
+            >
               <h4 class="card-title">{{seller.name}}</h4>
-            </div>
+            </a>
           </div>
-        </a>
+        </div>
         {% endfor %}
       </div>
       <button class="btn btn-success leftLst"><</button>

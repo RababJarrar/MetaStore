@@ -38,19 +38,19 @@ class Top_product(models.Model):
         Product, related_name='top_product', on_delete=models.CASCADE)
 
 
-class Order_item(models.Model):
-    product = models.ForeignKey(
-        Product, related_name='order_item', on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
+class Order(models.Model):
+    total = models.FloatField()
+    customer = models.ForeignKey(
+        Customer, related_name='orders', on_delete=models.CASCADE)
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
 
 
-class Order(models.Model):
-    items = models.ManyToManyField(
-        Order_item, related_name='cart', blank=True)
-    total = models.FloatField()
-    customer = models.ForeignKey(
-        Customer, related_name='orders', on_delete=models.CASCADE)
+class Order_item(models.Model):
+    product = models.ForeignKey(
+        Product, related_name='order_item', on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    order = models.ManyToManyField(
+        Order, related_name='item')
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)

@@ -32,16 +32,13 @@
     <header class="container main_header" style="height: 180px">
       <div class="bignav fixed-top">
         <!-- Jumbotron -->
-        <div class="p-3 text-center bg-white border-bottom">
+        <div class="text-center bg-white border-bottom">
           <div class="container">
-            <div class="row">
+            <div class="row d-flex align-items-center">
               <div
                 class="col-md-4 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0"
               >
-                <a
-                  href="/store"
-                  class="ms-md-2 text-primary text-decoration-none"
-                >
+                <a href="/store" class="ms-md-2 text-dark text-decoration-none">
                   <i class="fas fa-h1">
                     <h1>
                       <i class="fa-brands fa-meta"></i>
@@ -89,7 +86,9 @@
                   >
 
                   {%else%}
-                  <a href="/" class="btn btn-outline-success btn-sm">Signin</a>
+                  <a href="/login" class="btn btn-outline-success btn-sm"
+                    >Signin</a
+                  >
                   {%endif%}
                 </div>
               </div>

@@ -5,8 +5,11 @@ import bcrypt
 # Create your views here.
 
 
-def view_customer_login(request):
+def index(request):
+    return redirect('/store')
 
+
+def view_customer_login(request):
     return render(request, 'login/login.html')
 
 
@@ -18,7 +21,7 @@ def login_customer(request):
         print(errors)
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/')
+        return redirect('/login')
     else:
         email = request.POST.get('email')
         customer = Customer.objects.get(email=email)
@@ -35,7 +38,7 @@ def create_customer(request):
         for key, value in errors.items():
             messages.error(request, value)
         print(errors)
-        return redirect('/')
+        return redirect('/login')
     else:
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
@@ -72,7 +75,7 @@ def login_seller(request):
         print(errors)
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/')
+        return redirect('/login_seller_view')
     else:
         email = request.POST.get('email')
         seller = Seller.objects.get(email=email)
@@ -90,7 +93,7 @@ def create_seller(request):
         for key, value in errors.items():
             messages.error(request, value)
         print(errors)
-        return redirect('/')
+        return redirect('/login_seller_view')
     seller_name = request.POST.get('seller_name')
     mobile = request.POST.get('mobile')
     email = request.POST.get('email')
