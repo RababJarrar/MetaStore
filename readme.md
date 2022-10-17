@@ -1,12 +1,12 @@
-#Meta Store.
-##Table of Contents
-###Our mission and vision:
-###Technologies Used
-###Features
-###Members
-###Contact
+# Meta Store.
+### Table of Contents
+### Our mission and vision:
+### Technologies Used
+### Features
+### Members
+### Contact
 
-# Site overview:
+## Site overview:
 
 - solving the problem we have in Palestine through aboard online shopping, like delays, govermental procedures, trust issues with aboard online shopping, and payment methods that is not available to everyone and not everyone like to deal with banking credit cards and its fees.\*
 
@@ -17,7 +17,7 @@ time from routine shopping and offering them the best prices possible.
 
 ![This is an image](relative link for pic)
 
-##Features:
+## Features:
 | feature | Description |
 | :--- | :--- |
 | Login and Registeration | ability for the user to login/registeration as seller or customer |
@@ -32,20 +32,20 @@ time from routine shopping and offering them the best prices possible.
 | Seller | ability for the seller to display the information about him and market their products |
 | Customer | ability for the customer to display the information about him and the detailes of his order |
 
-####Technologies Used
-*python - version 3.10.7
-*Django - version 4.1.1
-*Bootstrap - version 5.0
-*JQuery and AJAX
+## Technologies Used
+* python - version 3.10.7
+* Django - version 4.1.1
+* Bootstrap - version 5.0
+* JQuery and AJAX
 
 
-##Members
-Osama Tbaileh
-Abdelrahman Anani.
-Maryam Dabbous.
-Rabab Jarrar.
+## Members
+#### Osama Tbaileh
+#### Abdelrahman Anani.
+#### Maryam Dabbous.
+#### Rabab Jarrar.
 
-##Contact us on
-mariam.dabous@hotmail.com
-rababjarrar1997@yahoo.com
-abood.anani57@gmail.com
+#### Contact us on
+* mariam.dabous@hotmail.com
+* rababjarrar1997@yahoo.com
+* abood.anani57@gmail.com
