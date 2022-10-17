@@ -45,7 +45,7 @@ time from routine shopping and offering them the best prices possible.
 #### Maryam Dabbous.
 #### Rabab Jarrar.
 
-#### Contact us on
+### Contact us on
 * mariam.dabous@hotmail.com
 * rababjarrar1997@yahoo.com
 * abood.anani57@gmail.com
