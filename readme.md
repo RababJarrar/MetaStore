@@ -33,10 +33,10 @@ time from routine shopping and offering them the best prices possible.
 | Customer | ability for the customer to display the information about him and the detailes of his order |
 
 ####Technologies Used
-[]python - version 3.10.7
-[]Django - version 4.1.1
-[]Bootstrap - version 5.0
-[]JQuery and AJAX
+*python - version 3.10.7
+*Django - version 4.1.1
+*Bootstrap - version 5.0
+*JQuery and AJAX
 
 
 ##Members
