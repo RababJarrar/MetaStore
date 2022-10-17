@@ -102,7 +102,7 @@
 </div>
 
 <!-- All Products -->
-<h1 class="container text-center mb-1 form_header">All Products:</h1>
+<h1 class="container text-center mb-1 form_header">Products Onsale:</h1>
 <div class="container col-9 bg-light rounded mb-4">
   <div class="row d-flex flex-wrap">
     {% for product in all_products %}
@@ -112,12 +112,14 @@
         src="{{product.image.url}}"
         class="card-img-top d-block"
         alt="{{product.description}}"
+        style="width: 15rem; height: 20rem"
       />
       {%else%}
       <img
         src="{% static 'store/imgs/default_product.png' %}"
         class="card-img-top d-block"
         alt="{{product.description}}"
+        style="width: 15rem; height: 20rem"
       />
       {%endif%}
       <div class="card-body">

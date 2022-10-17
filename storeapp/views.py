@@ -41,6 +41,7 @@ def create_product(request):
     seller_id = request.session['seller_id']
     seller = Seller.objects.get(id=seller_id)
     category = request.POST.get('category')
+
     category = Product_category.objects.create(
         name=category
     )
@@ -62,6 +63,7 @@ def create_product(request):
     if image:
         new_product.image = image
     new_product.seller.add(seller)
+    category.products.add(new_product)
     new_product.save()
     return redirect('/store/seller')
 
@@ -108,6 +110,14 @@ def view_sales(request):
         'sellers': sellers
     }
     return render(request, 'store/sales.html', context)
+
+
+def products_in_categories(request):
+    categories = Product_category.objects.all()
+    context = {
+        'categories': categories
+    }
+    return render(request, 'store/categories.html', context)
 
 
 def customer_profile(request):

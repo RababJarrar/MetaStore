@@ -15,12 +15,9 @@
     />
     <link rel="stylesheet" href="{% static 'login/css/styles.css' %}" />
   </head>
-  <body style="background-image: url('../../static/login/imgs/bg.png')">
+  <body>
     <section>
-      <div
-        class="container"
-        style="background-image: url('../../static/login/imgs/ggg.jfif')"
-      >
+      <div class="container">
         <div class="user signinBx">
           <div class="formBx">
             <form action="/login_customer" method="POST">
@@ -128,14 +125,16 @@
         {% endif %}
       </div>
     </section>
+
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+      type="text/javascript"
+    ></script>
     <script
       type="text/javascript"
       src="{% static 'login/js/toggle.js' %}"
     ></script>
-    <script
-      src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
-      type="text/javascript"
-    >
+    <script>
       $(document).ready(function () {
         $('#ConfirmPassword').keyup(function () {
           if ($('#Password').val() != $('#ConfirmPassword').val()) {

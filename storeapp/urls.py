@@ -13,6 +13,7 @@ urlpatterns = [
     path('customer_profile', views.customer_profile),
     path('sales', views.view_sales),
     path('add_profile_picture', views.add_profile_picture),
+    path('categories', views.products_in_categories),
     # ========= cart =========
     path('cart', views.show_cart),
     path('add_to_cart', views.add_to_cart),
