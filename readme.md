@@ -14,11 +14,6 @@ Meta Store is a platform that allow Sellers who meet certain crieteria to join t
 best prices and delevering orders to customers from home with additional features of supscribing to monthly or weekly plans to save people
 time from routine shopping and offering them the best prices possible.
 
-##Technologies Used
-python - version 3.10.7
-Django - version 4.1.1
-Bootstrap - version 5.0
-JQuery and AJAX
 
 ![This is an image](relative link for pic)
 
@@ -36,6 +31,13 @@ JQuery and AJAX
 | Cart | ability for the customer to show his cart and its items |
 | Seller | ability for the seller to display the information about him and market their products |
 | Customer | ability for the customer to display the information about him and the detailes of his order |
+
+####Technologies Used
+python - version 3.10.7
+Django - version 4.1.1
+Bootstrap - version 5.0
+JQuery and AJAX
+
 
 ##Members
 Osama Tbaileh
