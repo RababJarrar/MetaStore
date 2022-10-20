@@ -49,3 +49,4 @@ time from routine shopping and offering them the best prices possible.
 * mariam.dabous@hotmail.com
 * rababjarrar1997@yahoo.com
 * abood.anani57@gmail.com
+* osama.tb02@gmail.com
